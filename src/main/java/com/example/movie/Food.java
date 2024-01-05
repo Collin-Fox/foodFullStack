@@ -18,4 +18,10 @@ public class Food {
     private String price;
     private String img;
 
+    public Food(String storeId, String name, String price, String img) {
+        this.storeId = storeId;
+        this.name = name;
+        this.price = price;
+        this.img = img;
+    }
 }
