@@ -26,4 +26,11 @@ public class ReservationController {
                 payload.get("time"), payload.get("requests")), HttpStatus.CREATED);
     }
 
+    @DeleteMapping(value = "/{partyName}")
+    public Long deleteReservationByPartyName(@PathVariable String partyName){
+        return reservationService.deleteReservation(partyName);
+    }
+
+
+
 }

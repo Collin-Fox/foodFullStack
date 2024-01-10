@@ -21,13 +21,15 @@ public class FoodService {
         return foodRepository.findAll();
     }
 
-    public Optional<Food> singleFood(String storeId){
-        return foodRepository.findFoodBystoreId(storeId);
-    }
+    public Optional<List<Food>> foodByCategory(String cat) { return  foodRepository.findFoodBycat(cat); }
 
-    public Food createFood(String storeId, String name, String price, String img){
+   // public Optional<Food> singleFood(String storeId){
+      //  return foodRepository.findFoodBystoreId(storeId);
+   // }
 
-        Food food = foodRepository.insert(new Food(storeId, name, price, img));
+    public Food createFood(String storeId, String name, String price, String img, String cat){
+
+        Food food = foodRepository.insert(new Food(storeId, name, price, img, cat));
 
         return food;
     }

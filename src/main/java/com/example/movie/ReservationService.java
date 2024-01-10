@@ -16,6 +16,13 @@ public class ReservationService {
 
     public List<Reservation> allReservations(){return resRepository.findAll();}
 
+
+
+    public Long deleteReservation(String partyName){
+        return resRepository.deleteReservationBypartyName(partyName);
+    }
+
+
     public Reservation createReservation(String partyName, String email, String phone, String size, String date, String time, String requests){
         Reservation reservation = resRepository.insert(new Reservation(partyName, email, phone, size, date, time,requests));
 

@@ -19,13 +19,20 @@ public class FoodController {
     public ResponseEntity<List<Food>> allFood(){
         return new ResponseEntity<List<Food>>(foodService.allFood(), HttpStatus.OK);
     }
-    @GetMapping("/{storeId}")
-    public ResponseEntity<Optional<Food>> getSingleFood(@PathVariable String storeId){
-        return new ResponseEntity<Optional<Food>>(foodService.singleFood(storeId), HttpStatus.OK);
+
+    @GetMapping("/{cat}")
+    public ResponseEntity<Optional<List<Food>>> getFoodByCat(@PathVariable String cat){
+        return new ResponseEntity<Optional<List<Food>>>(foodService.foodByCategory(cat), HttpStatus.OK);
     }
+   // @GetMapping("/{storeId}")
+    //public ResponseEntity<Optional<Food>> getSingleFood(@PathVariable String storeId){
+      //  return new ResponseEntity<Optional<Food>>(foodService.singleFood(storeId), HttpStatus.OK);
+    //}
+
+
 
     @PostMapping
     public ResponseEntity<Food> createFood(@RequestBody Map<String, String> payload){
-        return new ResponseEntity<Food>(foodService.createFood(payload.get("storeId"), payload.get("name"), payload.get("price"), payload.get("img")), HttpStatus.CREATED);
+        return new ResponseEntity<Food>(foodService.createFood(payload.get("storeId"), payload.get("name"), payload.get("price"), payload.get("img"), payload.get("cat")), HttpStatus.CREATED);
     }
 }
